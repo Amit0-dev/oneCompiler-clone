@@ -1,1 +1,1 @@
-print('hi there')
+print(100 + 200)

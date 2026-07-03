@@ -28,6 +28,7 @@ router.post("/submit", async (req, res) => {
             code: submission.code,
             language: submission.language
         }))
+        console.log("Push into queue..")
 
         return res.status(201).json({ status: "Processing", id: submission.id })
     } catch (error) {
@@ -48,6 +49,12 @@ router.get("/submission/:id", async (req, res) => {
         const submission = await prisma.submission.findUnique({
             where: {
                 id
+            },
+            select: {
+                language: true,
+                status: true,
+                stdout: true,
+                stderr: true,
             }
         })
 
