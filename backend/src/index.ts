@@ -1,9 +1,12 @@
 import express from "express"
 import { connectRedis } from "./lib/redis"
+import codeRouter from "./routes/code"
 
 const app = express()
 
 app.use(express.json())
+
+app.use("/api/code", codeRouter)
 
 async function start() {
     try {
